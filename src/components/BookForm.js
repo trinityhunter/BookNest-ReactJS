@@ -21,7 +21,6 @@ const BookForm = () => {
         method: 'post',
         url: 'https://booknest-springboot-production.up.railway.app/addBook',
         data: {
-          id: 1,
           name: bookName,
           author: author
         }
