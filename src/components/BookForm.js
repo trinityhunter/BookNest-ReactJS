@@ -19,7 +19,7 @@ const BookForm = () => {
     
     axios({
         method: 'post',
-        url: 'https://booknest-springboot-production.up.railway.app/addBook',
+        url: 'http://localhost:8080/addBook',
         data: {
           name: bookName,
           author: author

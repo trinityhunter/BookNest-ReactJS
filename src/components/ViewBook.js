@@ -3,14 +3,12 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import BookCard from './BookCard';
 
-
-
 const ViewBook = () => {
 
     const [data, setData] = useState([])
 
     useEffect(() => {
-        axios.get('https://booknest-springboot-production.up.railway.app/getBooks')
+        axios.get('http://localhost:8080/getBooks')
         .then(function (response) {
             setData(response.data)
             console.log(response);
@@ -21,6 +19,14 @@ const ViewBook = () => {
         .finally(function () {
         });
     }, [setData])
+
+    const handleDelete = async (id) => {
+        try {
+          axios.delete(`http://localhost:8080/${id}`)
+        } catch (error) {
+          console.error('Error deleting record:', error);
+        }
+      };
     
 
   return (
@@ -31,7 +37,8 @@ const ViewBook = () => {
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '20px', margin: '40px' }}>
 
             {data.map((book) => (
-                <BookCard key={book.id} name={book.name} author={book.author} />
+                <BookCard key={book.id} record={book}
+                onDelete={handleDelete} />
             ))}
 
         </div>

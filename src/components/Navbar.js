@@ -73,7 +73,7 @@ const Navbar = () => {
       return;
     }
 
-    axios.get(`https://booknest-springboot-production.up.railway.app/${id}`)
+    axios.get(`http://localhost:8080/${id}`)
     .then(function (response) {
       // handle success
       setdata(response.data)

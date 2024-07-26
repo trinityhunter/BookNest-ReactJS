@@ -5,9 +5,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import image from '../assets/th.jpeg'
+import axios from 'axios';
 
-export default function BookCard(props) {
-    // console.log(props)
+export default function BookCard({ record, onDelete }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -19,16 +19,16 @@ export default function BookCard(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {props.name}
+            {record.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            By - {props.author}
+            By - {record.author}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          READ
+        <Button size="small" color="primary" onClick={() => onDelete(record.id)}>
+          DELETE
         </Button>
       </CardActions>
     </Card>
